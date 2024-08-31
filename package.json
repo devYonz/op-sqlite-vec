@@ -11,6 +11,7 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@op-engineering/op-sqlite": "^7.4.0",
     "expo": "^51.0.0",
     "expo-constants": "~16.0.1",
     "expo-linking": "~6.3.1",
@@ -31,6 +32,16 @@
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
     "typescript": "~5.3.3"
+  },
+  "op-sqlite": {
+    "sqliteVec": true,
+    "libsql": false,
+    "sqlcipher": false,
+    "crsqlite": false,
+    "performanceMode": "1",
+    "iosSqlite": false,
+    "sqliteFlags": "-DSQLITE_DQS=0",
+    "fts5": true
   },
   "private": true
 }

@@ -16,6 +16,12 @@
       ]
     ],
     "name": "embed-opsql",
-    "slug": "embed-opsql"
+    "slug": "embed-opsql",
+    "ios": {
+      "bundleIdentifier": "embed-opsql"
+    },
+    "android": {
+      "package": "ai.embedopsql"
+    }
   }
 }
