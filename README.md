@@ -11,3 +11,8 @@ npx create-expo-app -e with-router-tailwind
 [] Store chats as strings into '@op-engineering/op-sqlite' database
 [] Test clustering with sqlite-vec
 [] Check if drizzle and op-sqlite can be used together
+
+
+# Don't judge the code
+Verification for op-sqlite and sqlite-vec in : [Chat.tsx useEffect](src/app/chat.tsx#L23)
+
