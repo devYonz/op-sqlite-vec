@@ -4,8 +4,6 @@ import { Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
-
-
   return (
     <View className='flex flex-1'>
       <Header />
@@ -50,6 +48,10 @@ function Header() {
   return (
     <View style={{ paddingTop: top }}>
       <View className='px-4 lg:px-6 h-14 flex items-center flex-row justify-between '>
+        <Link className='font-bold flex-1 items-center justify-center' href='/database'>
+          Database
+        </Link>
+
         <Link className='font-bold flex-1 items-center justify-center' href='/'>
           ACME
         </Link>
