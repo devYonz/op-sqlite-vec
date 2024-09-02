@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { drizzle, OPSQLiteDatabase } from "drizzle-orm/op-sqlite";
+import { migrate } from "drizzle-orm/expo-sqlite/migrator";
+
 import { open } from "@op-engineering/op-sqlite";
+import { user } from "@/db/schema";
 
 const now = () =>
   new Date().toLocaleTimeString("en-US", {
@@ -16,15 +19,24 @@ const opsqlite = open({
 const db = drizzle(opsqlite);
 
 export default function Database() {
-  useEffect(() => {
-    const runops = async () => {
-      console.log(`${now()} Migrations started!`);
-      migrate(db, { migrationsFolder: "drizzle" });
+  const [users, setUsers] = React.useState([]);
 
-      // const result = await db.select().from(users);
-      console.log(result);
+  const loadUsers = async () => {
+    const users = await db.select().from(user);
+    console.log(`${now()} Users fetched:`, users);
+    setUsers(users);
+  };
+  useEffect(() => {
+    const initDatabase = async () => {
+      console.log(`${now()} Database migrtion started!`);
+      try {
+        await migrate(db, { migrationsFolder: "src/db/drizzle" });
+        console.log(`${now()} Migrations completed successfully!`);
+      } catch (error) {
+        console.error(`${now()} Error in database migrtion:`, error);
+      }
     };
-    runops();
+    initDatabase();
   }, []);
 
   return (
@@ -32,10 +44,15 @@ export default function Database() {
       <View className='p-4 bg-slate-200'>
         <Text className='text-2xl w-full text-center font-bold'>Database Playground</Text>
       </View>
-      <View className='flex-1 items-center justify-center bg-indigo-300'></View>
+
+      <View className='flex-1 items-center justify-center bg-indigo-300'>
+        <View className='flex-1 flex-row'>
+          <Text>Database Playground</Text>
+          <Pressable>
+            <Text>Load Users</Text>
+          </Pressable>
+        </View>
+      </View>
     </View>
   );
-}
-function migrate(db: OPSQLiteDatabase<Record<string, never>>, arg1: { migrationsFolder: string }) {
-  throw new Error("Function not implemented.");
 }
