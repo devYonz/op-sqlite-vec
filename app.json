@@ -11,17 +11,17 @@
       [
         "expo-router",
         {
-          "origin": "https://n"
+          "origin": "https://vella.ai/"
         }
       ]
     ],
     "name": "embed-opsql",
     "slug": "embed-opsql",
     "ios": {
-      "bundleIdentifier": "embed-opsql"
+      "bundleIdentifier": "ai.vella.embedopsql"
     },
     "android": {
-      "package": "ai.embedopsql"
+      "package": "ai.vella.embedopsql"
     }
   }
 }

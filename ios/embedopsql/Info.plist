@@ -28,7 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>acme</string>
-          <string>embed-opsql</string>
+          <string>ai.vella.embedopsql</string>
         </array>
       </dict>
     </array>
